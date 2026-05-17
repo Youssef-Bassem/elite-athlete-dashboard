@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aura Recovery - Athlete Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Manrope:wght@400;500;600&amp;family=Sora:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#141820",
+                        "surface-container": "#E8ECF2",
+                        "primary": "#0072CE",
+                        "tertiary-fixed": "#FFDBC9",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#D0D5DE",
+                        "secondary": "#4A5260",
+                        "tertiary-container": "#B75502",
+                        "on-tertiary-fixed": "#321200",
+                        "outline-variant": "#C8CDD6",
+                        "playstation-blue": "#0072CE",
+                        "on-primary": "#FFFFFF",
+                        "on-secondary-fixed-variant": "#D0D5DE",
+                        "surface": "#F4F6FA",
+                        "secondary-container": "#D0D5DE",
+                        "surface-variant": "#D0D5DE",
+                        "background": "#F4F6FA",
+                        "surface-container-low": "#EEF1F6",
+                        "surface-canvas": "#F8F9FC",
+                        "on-background": "#141820",
+                        "surface-deep": "#FFFFFF",
+                        "primary-fixed-dim": "#0072CE",
+                        "surface-dim": "#F4F6FA",
+                        "inverse-primary": "#005FAE",
+                        "inverse-on-surface": "#2d3037",
+                        "on-tertiary": "#FFFFFF",
+                        "text-muted": "#6B7280",
+                        "primary-container": "#0072CE",
+                        "on-primary-fixed": "#001C3A",
+                        "tertiary-fixed-dim": "#E85D04",
+                        "on-tertiary-container": "#FFF5F1",
+                        "surface-container-high": "#DDE2EA",
+                        "accent-success": "#00F0FF",
+                        "on-surface": "#141820",
+                        "error": "#ffb4ab",
+                        "surface-tint": "#0072CE",
+                        "secondary-fixed": "#e2e2e2",
+                        "surface-card": "#EEF1F6",
+                        "action-glow": "rgba(0, 114, 206, 0.4)",
+                        "on-secondary": "#FFFFFF",
+                        "surface-container-lowest": "#FFFFFF",
+                        "on-primary-fixed-variant": "#004785",
+                        "on-secondary-fixed": "#141820",
+                        "primary-fixed": "#D4E3FF",
+                        "secondary-fixed-dim": "#4A5260",
+                        "on-secondary-container": "#6B7280",
+                        "surface-bright": "#C4C9D4",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#6B7280",
+                        "on-primary-container": "#FFFFFF",
+                        "on-tertiary-fixed-variant": "#753400",
+                        "tertiary": "#E85D04",
+                        "error-container": "#93000a",
+                        "on-surface-variant": "#4A5260"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "4rem",
+                        "gutter": "2rem",
+                        "container-max": "1800px",
+                        "sidebar-width": "280px",
+                        "insight-panel-width": "340px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Sora", "sans-serif"],
+                        "display-hero": ["Bebas Neue", "sans-serif"],
+                        "headline-lg": ["Sora", "sans-serif"],
+                        "display-hero-mobile": ["Bebas Neue", "sans-serif"],
+                        "body-md": ["Manrope", "sans-serif"],
+                        "body-lg": ["Manrope", "sans-serif"],
+                        "label-caps": ["Sora", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "display-hero": ["72px", { "lineHeight": "1.1", "letterSpacing": "0.05em", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "display-hero-mobile": ["48px", { "lineHeight": "1.1", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-canvas text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="hidden md:flex justify-between items-center w-full px-gutter py-6 ml-sidebar-width mr-insight-panel-width bg-transparent fixed top-0 z-40 transition-transform scale-95 origin-top">
+<div class="font-display-hero text-headline-lg text-on-surface tracking-widest">
+            Aura Recovery
+        </div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant/20">
+<span class="material-symbols-outlined" data-icon="notifications" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant/20">
+<span class="material-symbols-outlined" data-icon="share" style="font-variation-settings: 'FILL' 0;">share</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/30">
+<img alt="Athlete Avatar" class="w-full h-full object-cover" data-alt="A high-contrast, professional headshot of an athletic individual in a futuristic dark setting. The lighting is moody with subtle blue rim lights accentuating their features. The overall aesthetic perfectly matches a premium, futuristic gaming-inspired dashboard. Soft background blur keeps the focus on the subject's face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbF66V_MzacPiuZX7ZJUs8hWJatuhpZbx2WjZApKH9KDJOf0triu_Xp8qY99a1cVFb-RH-vUHv-VnKyGdRnWV4c-2nNZ6P5apG4kamGiUUtACL6ReXUIC1GvKjjBgmGh-ZOyh6HX_XNuflf3lxXAZ9kgGwOXXBTU_Bw4WVaBdT2MD71ZlJ4HRT3BhzamL4g4w2aK8P0L68W1Yj3j9laX6LaQ2kR1V_0VqbIPtkmH1rT1PnjKlrkBu4N19abFI-3xps--Z5jwZG8p8"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-screen w-sidebar-width bg-surface-container-low/80 backdrop-blur-xl border-r border-outline-variant/10 flex flex-col py-8 px-4 z-50">
+<!-- Brand Area -->
+<div class="mb-12 px-4">
+<div class="font-display-hero text-headline-lg text-playstation-blue mb-6">AURA</div>
+<div class="flex items-center gap-4 p-4 rounded-xl bg-surface-container-highest/30 border border-outline-variant/10">
+<img alt="Athlete Profile Picture" class="w-12 h-12 rounded-full object-cover border-2 border-playstation-blue/30" data-alt="A high-contrast, professional headshot of an athletic individual in a futuristic dark setting. The lighting is moody with subtle blue rim lights accentuating their features. The overall aesthetic perfectly matches a premium, futuristic gaming-inspired dashboard. Soft background blur keeps the focus on the subject's face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM4vHr359v4IbD5kR2BjX0GfMdDFuhXY77z6Fme0kmtYIf2RzJNqpQBvHqI2nNmeD7Gd9-x1JZapx8viQCItXCerC4KHp1sRI_F6DQi_D44klGT_4l_z3HoQoh8ENAgvh58cQ4VDhkns-rAj_bxlRBBPkcvErFFzktiMbikIEa7ka9XPefKphbCs0Z44guQ5SLbNu5qU9fAJX9LD-vpCquHEYkfI9173pXjw4DOo-Ayk7U-mj4TjJVpCL4qVJHIazDX51E6QXHYQA"/>
+<div>
+<h3 class="font-headline-md text-body-lg text-on-surface mb-1">Pro Elite</h3>
+<p class="font-body-md text-label-caps text-accent-success">Recovery Status: Optimal</p>
+</div>
+</div>
+</div>
+<!-- Main Nav -->
+<ul class="flex flex-col gap-2 flex-grow">
+<!-- Active Tab: Dashboard -->
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-primary border-l-4 border-primary bg-primary/5 transition-all duration-300 ease-in-out font-headline-md text-body-lg font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-variant/50 transition-all duration-300 ease-in-out font-headline-md text-body-lg border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="fitness_center" style="font-variation-settings: 'FILL' 0;">fitness_center</span>
+                    Training
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-variant/50 transition-all duration-300 ease-in-out font-headline-md text-body-lg border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="rebase_edit" style="font-variation-settings: 'FILL' 0;">rebase_edit</span>
+                    Recovery
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-variant/50 transition-all duration-300 ease-in-out font-headline-md text-body-lg border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="psychology" style="font-variation-settings: 'FILL' 0;">psychology</span>
+                    Insights
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-variant/50 transition-all duration-300 ease-in-out font-headline-md text-body-lg border-l-4 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 0;">person</span>
+                    Profile
+                </a>
+</li>
+</ul>
+<!-- Action & Footer -->
+<div class="mt-auto px-2">
+<button class="w-full mb-6 bg-playstation-blue text-on-primary-container font-headline-md text-body-md py-3 rounded-full flex items-center justify-center gap-2 hover:bg-inverse-primary transition-colors shadow-[0_0_20px_rgba(0,114,206,0.3)]">
+<span class="material-symbols-outlined text-sm" data-icon="sync" style="font-variation-settings: 'FILL' 0;">sync</span>
+                Sync Data
+            </button>
+<ul class="flex flex-col gap-1 border-t border-outline-variant/10 pt-4">
+<li>
+<a class="flex items-center gap-3 px-2 py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-variant/50 transition-all duration-300 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="settings" style="font-variation-settings: 'FILL' 0;">settings</span>
+                        Settings
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-2 py-2 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-variant/50 transition-all duration-300 ease-in-out font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help" style="font-variation-settings: 'FILL' 0;">help</span>
+                        Support
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-0 md:ml-[280px] mr-0 xl:mr-[340px] pt-24 md:pt-32 px-4 md:px-8 pb-24 min-h-screen flex flex-col gap-section-gap">
+<!-- Hero Section -->
+<section class="relative w-full rounded-2xl overflow-hidden bg-surface-card border border-outline-variant/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-center p-8 md:p-12 gap-12 min-h-[400px]">
+<!-- Ambient Glow Background -->
+<div class="absolute inset-0 bg-gradient-to-br from-playstation-blue/10 via-transparent to-transparent opacity-50 z-0"></div>
+<!-- Hero Text -->
+<div class="relative z-10 flex-1 flex flex-col items-start gap-4">
+<span class="font-label-caps text-label-caps text-playstation-blue uppercase tracking-widest bg-playstation-blue/10 px-3 py-1 rounded-full border border-playstation-blue/20">Daily Assessment</span>
+<h1 class="font-display-hero text-display-hero text-on-surface">Ready to Perform</h1>
+<p class="font-body-md text-body-lg text-on-surface-variant max-w-md mb-4">Your central nervous system has fully recovered. Muscular fatigue is minimal. Optimal window for high-intensity training protocols.</p>
+<button class="bg-playstation-blue text-on-primary-container font-headline-md text-body-md px-8 py-3 rounded-full hover:bg-inverse-primary transition-colors shadow-[0_0_20px_rgba(0,114,206,0.4)] flex items-center gap-2">
+                    Start Session
+                    <span class="material-symbols-outlined" data-icon="arrow_forward" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+<!-- Cinematic Recovery Viz -->
+<div class="relative z-10 flex justify-center items-center w-full md:w-auto">
+<div class="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+<!-- Glowing Rings -->
+<div class="absolute inset-0 rounded-full border-4 border-surface-container-highest opacity-30"></div>
+<div class="absolute inset-0 rounded-full border-[12px] border-transparent border-t-playstation-blue border-r-playstation-blue border-b-accent-success shadow-[0_0_40px_rgba(0,114,206,0.3)] rotate-45 transform" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);"></div>
+<!-- Center Data -->
+<div class="relative z-20 flex flex-col items-center justify-center bg-surface-card/80 backdrop-blur-md rounded-full w-48 h-48 md:w-56 md:h-56 border border-outline-variant/20 shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
+<span class="font-display-hero text-display-hero text-on-surface leading-none">92<span class="text-headline-lg">%</span></span>
+<span class="font-headline-md text-body-md text-text-muted mt-2">Recovery Score</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Analytics Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Sleep Quality Card -->
+<div class="bg-surface-card border border-outline-variant/10 rounded-2xl p-6 md:p-8 flex flex-col gap-6 relative overflow-hidden group hover:border-playstation-blue/30 transition-colors duration-300">
+<div class="absolute top-0 right-0 w-32 h-32 bg-playstation-blue/5 rounded-full blur-2xl -mr-10 -mt-10 transition-opacity opacity-0 group-hover:opacity-100"></div>
+<div class="flex justify-between items-start relative z-10">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">Sleep Quality</h2>
+<p class="font-body-md text-body-md text-text-muted">Last Night's Architecture</p>
+</div>
+<div class="bg-surface-container-high rounded-full w-12 h-12 flex items-center justify-center text-primary border border-outline-variant/20">
+<span class="material-symbols-outlined" data-icon="bedtime" style="font-variation-settings: 'FILL' 0;">bedtime</span>
+</div>
+</div>
+<div class="flex items-end gap-4 relative z-10">
+<div class="font-display-hero text-display-hero-mobile text-on-surface leading-none">8h 12m</div>
+<div class="flex items-center gap-1 text-accent-success bg-accent-success/10 px-2 py-1 rounded text-label-caps font-label-caps mb-2">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up" style="font-variation-settings: 'FILL' 0;">trending_up</span>
+                        +4% vs Avg
+                    </div>
+</div>
+<!-- Abstract Chart Rep -->
+<div class="h-24 flex items-end gap-2 mt-4 relative z-10">
+<div class="w-1/6 bg-surface-container-high h-1/4 rounded-t-sm"></div>
+<div class="w-1/6 bg-playstation-blue h-3/4 rounded-t-sm opacity-80 shadow-[0_0_10px_rgba(0,114,206,0.3)]"></div>
+<div class="w-1/6 bg-accent-success h-full rounded-t-sm opacity-80 shadow-[0_0_10px_rgba(0,240,255,0.3)]"></div>
+<div class="w-1/6 bg-surface-container-high h-2/4 rounded-t-sm"></div>
+<div class="w-1/6 bg-playstation-blue h-1/2 rounded-t-sm opacity-80 shadow-[0_0_10px_rgba(0,114,206,0.3)]"></div>
+<div class="w-1/6 bg-surface-container-high h-1/4 rounded-t-sm"></div>
+</div>
+<div class="flex justify-between text-label-caps font-label-caps text-text-muted uppercase tracking-wider relative z-10">
+<span>Awake</span>
+<span>Light</span>
+<span>Deep</span>
+<span>REM</span>
+</div>
+</div>
+<!-- Fatigue Levels Card -->
+<div class="bg-surface-card border border-outline-variant/10 rounded-2xl p-6 md:p-8 flex flex-col gap-6 relative overflow-hidden group hover:border-tertiary/30 transition-colors duration-300">
+<div class="absolute top-0 left-0 w-32 h-32 bg-tertiary/5 rounded-full blur-2xl -ml-10 -mt-10 transition-opacity opacity-0 group-hover:opacity-100"></div>
+<div class="flex justify-between items-start relative z-10">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">Fatigue Load</h2>
+<p class="font-body-md text-body-md text-text-muted">Central &amp; Peripheral</p>
+</div>
+<div class="bg-surface-container-high rounded-full w-12 h-12 flex items-center justify-center text-tertiary border border-outline-variant/20">
+<span class="material-symbols-outlined" data-icon="battery_charging_20" style="font-variation-settings: 'FILL' 0;">battery_charging_20</span>
+</div>
+</div>
+<div class="flex items-end gap-4 relative z-10">
+<div class="font-display-hero text-display-hero-mobile text-on-surface leading-none">Low</div>
+<div class="flex items-center gap-1 text-on-surface-variant bg-surface-container-high px-2 py-1 rounded text-label-caps font-label-caps mb-2">
+                        Optimal State
+                    </div>
+</div>
+<!-- Abstract Chart Rep -->
+<div class="mt-4 relative z-10 flex flex-col gap-3">
+<div>
+<div class="flex justify-between font-label-caps text-label-caps text-text-muted mb-1">
+<span>CNS Fatigue</span>
+<span>15%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-accent-success w-[15%] rounded-full shadow-[0_0_10px_rgba(0,240,255,0.4)]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-caps text-label-caps text-text-muted mb-1">
+<span>Muscular Damage</span>
+<span>28%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-playstation-blue w-[28%] rounded-full shadow-[0_0_10px_rgba(0,114,206,0.4)]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Nutrition & Hydration Compact Widgets -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+<div class="col-span-2 bg-surface-card border border-outline-variant/10 rounded-xl p-6 flex items-center gap-6">
+<div class="w-16 h-16 rounded-full border-4 border-surface-container-highest flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full border-4 border-transparent border-t-tertiary border-r-tertiary rotate-45"></div>
+<span class="material-symbols-outlined text-tertiary" data-icon="local_dining" style="font-variation-settings: 'FILL' 0;">local_dining</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-text-muted uppercase mb-1">Caloric Intake</p>
+<p class="font-headline-md text-headline-md text-on-surface leading-none">2,450 <span class="text-body-md text-text-muted">/ 3,200</span></p>
+</div>
+</div>
+<div class="col-span-2 bg-surface-card border border-outline-variant/10 rounded-xl p-6 flex items-center gap-6">
+<div class="w-16 h-16 rounded-full border-4 border-surface-container-highest flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full border-4 border-transparent border-t-playstation-blue border-r-playstation-blue border-b-playstation-blue -rotate-45 shadow-[0_0_15px_rgba(0,114,206,0.2)]"></div>
+<span class="material-symbols-outlined text-playstation-blue" data-icon="water_drop" style="font-variation-settings: 'FILL' 0;">water_drop</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-text-muted uppercase mb-1">Hydration Status</p>
+<p class="font-headline-md text-headline-md text-on-surface leading-none">85<span class="text-body-md text-text-muted">% Target</span></p>
+</div>
+</div>
+</section>
+</main>
+<!-- AI Insight Panel (Right Sidebar) -->
+<aside class="hidden xl:flex fixed right-0 top-0 h-screen w-insight-panel-width bg-surface-card/90 backdrop-blur-2xl border-l border-outline-variant/10 flex-col py-8 px-6 z-40 overflow-y-auto">
+<div class="pt-20 pb-6 flex items-center justify-between border-b border-outline-variant/10 mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-playstation-blue" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                Aura AI
+            </h2>
+<span class="font-label-caps text-label-caps text-text-muted bg-surface-container-high px-2 py-1 rounded">LIVE</span>
+</div>
+<div class="flex flex-col gap-6">
+<!-- Recommendation Widget 1 -->
+<div class="bg-surface-container-low border border-playstation-blue/20 rounded-xl p-5 shadow-[0_0_30px_rgba(0,114,206,0.05)] relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-playstation-blue shadow-[0_0_10px_rgba(0,114,206,0.8)]"></div>
+<div class="flex items-start gap-3 mb-3">
+<span class="material-symbols-outlined text-playstation-blue mt-0.5" data-icon="bolt" style="font-variation-settings: 'FILL' 0;">bolt</span>
+<h3 class="font-headline-md text-body-lg text-on-surface font-semibold">Prime for Power</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Your nervous system recovery indicates readiness for explosive movements. Suggest prioritizing plyometrics today.</p>
+<button class="text-playstation-blue font-headline-md text-body-md font-medium flex items-center gap-1 hover:text-primary transition-colors">
+                    View Protocol
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_right_alt" style="font-variation-settings: 'FILL' 0;">arrow_right_alt</span>
+</button>
+</div>
+<!-- Recommendation Widget 2 -->
+<div class="bg-surface-container-low border border-outline-variant/10 rounded-xl p-5">
+<div class="flex items-start gap-3 mb-3">
+<span class="material-symbols-outlined text-tertiary mt-0.5" data-icon="restaurant" style="font-variation-settings: 'FILL' 0;">restaurant</span>
+<h3 class="font-headline-md text-body-lg text-on-surface font-semibold">Refueling Window</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">To maximize recovery from yesterday's endurance block, increase complex carbohydrate intake by 15% in your next meal.</p>
+<button class="text-on-surface font-headline-md text-body-md font-medium flex items-center gap-1 hover:text-primary transition-colors">
+                    Log Meal
+                    <span class="material-symbols-outlined text-sm" data-icon="add" style="font-variation-settings: 'FILL' 0;">add</span>
+</button>
+</div>
+<!-- Insight Chart Snippet -->
+<div class="mt-4">
+<p class="font-label-caps text-label-caps text-text-muted uppercase mb-4">Recovery Trend (7 Days)</p>
+<div class="h-20 w-full flex items-end justify-between gap-1 opacity-70">
+<div class="w-full bg-surface-container-high h-[40%] rounded-t-sm"></div>
+<div class="w-full bg-surface-container-high h-[50%] rounded-t-sm"></div>
+<div class="w-full bg-surface-container-high h-[45%] rounded-t-sm"></div>
+<div class="w-full bg-surface-container-high h-[60%] rounded-t-sm"></div>
+<div class="w-full bg-surface-container-high h-[75%] rounded-t-sm"></div>
+<div class="w-full bg-surface-container-high h-[85%] rounded-t-sm"></div>
+<div class="w-full bg-playstation-blue h-[92%] rounded-t-sm shadow-[0_0_15px_rgba(0,114,206,0.4)] relative">
+<div class="absolute -top-2 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-on-surface"></div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</body></html>
